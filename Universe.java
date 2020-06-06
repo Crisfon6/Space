@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.io.IOException;
 
 /******************************************************************************
@@ -26,12 +27,15 @@ public class Universe {
 
     // read universe from standard input
     public Universe() {
-
+    	
         // number of bodies
         n = StdIn.readInt(); 
         double radius = StdIn.readDouble(); 
        
-
+        //
+        StdDraw.rectangle(0.5, 0.5, 0.5, 0.5);
+        StdDraw.setXscale(0.0,1.0);
+        StdDraw.setYscale(0.0,1.0);
         // read in the n bodies
         bodies = new Body[n]; 
         for (int i = 0; i < n; i++) { 
@@ -45,14 +49,14 @@ public class Universe {
             
             double mass = StdIn.readDouble(); 
             
-            String path_img = StdIn.readString();
+            String planet = StdIn.readString();
             
            // System.out.println(path_img);
             double[] position = { rx, ry }; 
             double[] velocity = { vx, vy }; 
             Vector r = new Vector(position); 
             Vector v = new Vector(velocity); 
-            bodies[i] = new Body(r, v, mass); 
+            bodies[i] = new Body(r, v, mass,planet); 
         } 
         //System.out.println(bodies);
          // the set scale for drawing on screen
@@ -98,9 +102,14 @@ public class Universe {
         Universe newton = new Universe();
         double dt = Double.parseDouble(args[0]);
         StdDraw.enableDoubleBuffering();
+        //StdDraw.setScale(-10.00e10,10.00e10);
+        StdDraw.setScale(-18.05E10 ,18.05E10 );
         while (true) {
             StdDraw.clear(); 
-            newton.increaseTime(dt); 
+            newton.increaseTime(dt);
+           //StdDraw.clear(Color.DARK_GRAY);
+           
+           StdDraw.picture(0,0, "starfield.jpg", 37.05E10, 37.05E10);
             newton.draw(); 
             StdDraw.show();
             StdDraw.pause(10);

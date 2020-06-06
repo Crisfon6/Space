@@ -7,6 +7,7 @@
  *
  *
  ******************************************************************************/
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -15,11 +16,15 @@ public class Body {
     private Vector r;           // position
     private Vector v;           // velocity
     private final double mass;  // mass
+    private final String planet ;
+    
 
-    public Body(Vector r, Vector v, double mass) {
+    public Body(Vector r, Vector v, double mass,String planet) {
         this.r = r;
         this.v = v;
         this.mass = mass;
+        this.planet = planet;
+       
     }
 
     public void move(Vector f, double dt) {
@@ -38,6 +43,7 @@ public class Body {
     }
 
     public void draw()  throws IOException{
+    	
     	/*try {
         BufferedImage img = null;
         File f = new File("pin.gif");
@@ -49,7 +55,8 @@ public class Body {
 		}*/
     	
         //String path = "earth.gif";
-        StdDraw.picture(0, 0, "pin.gif");
+    	// StdDraw.picture(0, 0, "starfield.jpg",1,1);
+       StdDraw.picture(r.cartesian(0), r.cartesian(1), planet);
         /*
        int n = 10;
        double[] coor ={ 0.1, 0.2, 0.3, 0.2 };
@@ -60,9 +67,9 @@ public class Body {
           }
         
         */
-        StdDraw.setPenRadius(0.025);
+        //StdDraw.setPenRadius(0.025);
         //
-       StdDraw.point(r.cartesian(0), r.cartesian(1));
+       //StdDraw.point(r.cartesian(0), r.cartesian(1));
        //StdDraw.picture(r.cartesian(0), r.cartesian(1));
     }
 
