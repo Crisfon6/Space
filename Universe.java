@@ -125,6 +125,7 @@ public class Universe {
         File file = new File("2001.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String string;
+        /*
         ArrayList<Integer> song = new ArrayList<Integer>();
         int pos=0;
        while((string = br.readLine()) != null) {
@@ -137,10 +138,10 @@ public class Universe {
     	 
        }
        System.out.println(song.size());
-        
-        for(int i =0;i<song.size()-1;i++) {
+        */
+     //   for(int i =0;i<song.size()-1;i++) {
         	
-      
+      while(true) {
             StdDraw.clear(); 
             newton.increaseTime(dt);
             
@@ -151,6 +152,7 @@ public class Universe {
             newton.draw(); 
             StdDraw.show();
             StdDraw.pause(T);
-        } 
+      }
+      //  } 
     } 
 }
